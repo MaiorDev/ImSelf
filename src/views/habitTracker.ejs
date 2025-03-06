@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/habitTracker.css" />
+    <title>Habit Tracker</title>
+  </head>
+  <body>
+    <%- include ("./template/nav.ejs") %>
+    <main>
+      <div id="container-habits">
+        <div id="pending" class="division">
+          <h2>Pending</h2>
+          <% habits.forEach((habit) => { %> <% if (habit.status === 'pending') {
+          %>
+          <p class="habit"><%= habit.title %></p>
+          <% } %> <% }); %>
+        </div>
+        <div id="in-progress" class="division">
+          <h2>In progress</h2>
+          <% habits.forEach((habit) => { %> <% if (habit.status ===
+          'inProgress') { %>
+          <p class="habit"><%= habit.title %></p>
+          <% } %> <% }); %>
+        </div>
+        <div id="complete" class="division">
+          <h2>Complete</h2>
+          <% habits.forEach((habit) => { %> <% if (habit.status === 'complete')
+          { %>
+          <p class="habit"><%= habit.title %></p>
+          <% } %> <% }); %>
+        </div>
+      </div>
+      <div id="Container-new_habit">
+        <button id="add-Habit">+</button>
+      </div>
+    </main>
+
+    <div id="container-form">
+      <form id="newHabitForm">
+        <label for="titleInput">Tile of the new habit</label>
+        <input type="text" name="title" id="titleInput" />
+
+        <label for="descriptionInput">Description</label>
+        <textarea
+          name="description"
+          id="descriptionInput"
+          name="description"
+        ></textarea>
+        <!-- Button for add new habbit -->
+        <button type="submit">Add Habit</button>
+      </form>
+    </div>
+
+    <script src="js/habitManager.js"></script>
+  </body>
+</html>

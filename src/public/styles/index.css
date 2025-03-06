@@ -1,0 +1,24 @@
+body {
+  color: #f1f1f1;
+  background-color: #101218;
+}
+header h1 {
+  font-size: 120px;
+  font-family: "Montserrat", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+.transUp {
+  cursor: pointer;
+  transition: 0.5s, color 0.1s;
+  -webkit-transition: 0.5s, color 0.1s;
+  -moz-transition: 0.5s, color 0.1s;
+}
+.transUp:hover {
+  transform: translatey(-8px);
+  -webkit-transform: translatey(-8px);
+  -moz-transform: translatey(-8px);
+}

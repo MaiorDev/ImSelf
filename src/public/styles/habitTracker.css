@@ -1,0 +1,23 @@
+body {
+  font-family: "Merriweather Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #f1f1f1;
+  background-color: #101218;
+}
+
+#container-habits {
+  width: 100%;
+  display: flex;
+}
+#container-habits .division {
+  margin: 20px;
+}
+.habit {
+  font-family: sans-serif;
+}
+/* Form of the new habit */
+#container-form {
+  display: none;
+}
