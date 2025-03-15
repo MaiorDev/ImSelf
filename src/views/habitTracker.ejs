@@ -10,53 +10,110 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/habitTracker.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link rel="stylesheet" href="/styles/header.css " />
     <title>Habit Tracker</title>
   </head>
   <body>
-    <%- include ("./template/nav.ejs") %>
+    <%- include ("./template/nav.ejs") %> <%- include ("./template/header.ejs")
+    %>
     <main>
+      <h1>Habit Tracker</h1>
       <div id="container-habits">
-        <div id="pending" class="division">
+        <div id="pending" class="division droppable" data-status="pending">
           <h2>Pending</h2>
           <% habits.forEach((habit) => { %> <% if (habit.status === 'pending') {
           %>
-          <p class="habit"><%= habit.title %></p>
+          <p
+            class="habit"
+            draggable="true"
+            data-id="<%= habit.id_habit %>"
+            data-title="<%= habit.title %>"
+            data-description="<%= habit.description %>"
+          >
+            <%= habit.title %>
+          </p>
           <% } %> <% }); %>
         </div>
-        <div id="in-progress" class="division">
+
+        <div
+          id="in-progress"
+          class="division droppable"
+          data-status="inProgress"
+        >
           <h2>In progress</h2>
           <% habits.forEach((habit) => { %> <% if (habit.status ===
           'inProgress') { %>
-          <p class="habit"><%= habit.title %></p>
+          <p
+            class="habit"
+            draggable="true"
+            data-id="<%= habit.id_habit %>"
+            data-title="<%= habit.title %>"
+            data-description="<%= habit.description %>"
+          >
+            <%= habit.title %>
+          </p>
           <% } %> <% }); %>
         </div>
-        <div id="complete" class="division">
+
+        <div id="complete" class="division droppable" data-status="complete">
           <h2>Complete</h2>
           <% habits.forEach((habit) => { %> <% if (habit.status === 'complete')
           { %>
-          <p class="habit"><%= habit.title %></p>
+          <p
+            class="habit"
+            draggable="true"
+            data-id="<%= habit.id_habit %>"
+            data-title="<%= habit.title %>"
+            data-description="<%= habit.description %>"
+          >
+            <%= habit.title %>
+          </p>
           <% } %> <% }); %>
         </div>
       </div>
-      <div id="Container-new_habit">
+
+      <div id="container-new_habit">
         <button id="add-Habit">+</button>
       </div>
     </main>
-
+    <!-- Add habit form -->
     <div id="container-form">
       <form id="newHabitForm">
-        <label for="titleInput">Tile of the new habit</label>
-        <input type="text" name="title" id="titleInput" />
+        <button id="close-form">X</button>
+        <h2>Add a new habit</h2>
+        <label for="titleInput">Title of the new habit</label>
+        <input
+          type="text"
+          name="title"
+          id="titleInput"
+          placeholder="Make the homework"
+        />
 
         <label for="descriptionInput">Description</label>
-        <textarea
-          name="description"
-          id="descriptionInput"
-          name="description"
-        ></textarea>
-        <!-- Button for add new habbit -->
-        <button type="submit">Add Habit</button>
+        <textarea name="description" id="descriptionInput"></textarea>
+
+        <button type="submit" id="submitAddHabit">Add Habit</button>
       </form>
+    </div>
+    <!-- info card habit -->
+
+    <div id="container-info-card">
+      <div id="info-card">
+        <button id="close-info-card">X</button>
+        <label for="title_info-card">Title</label>
+        <input id="title_info-card" />
+        <label for="description_info-card">Description</label>
+        <textarea id="description_info-card"></textarea>
+        <div id="interact">
+          <button id="delete-habit">
+            <img src="/assets/delete.png" alt="Delete habit" />
+          </button>
+          <button id="edit-habit">
+            <img src="/assets/edit.png" alt="Edit habit" />
+          </button>
+        </div>
+      </div>
     </div>
 
     <script src="js/habitManager.js"></script>
