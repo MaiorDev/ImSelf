@@ -1,0 +1,591 @@
+body {
+  color: #fff;
+  margin: 0;
+  background-color: #101218;
+  font-family: "Merriweather Sans", serif;
+}
+
+main {
+  padding-top: 40px;
+  height: calc(100vh - 100px);
+  width: calc(100% - 90px);
+  margin-left: 90px;
+  margin-top: 60px;
+  overflow-y: auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.school {
+  background-color: #1e1e2e;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0px 2px 15px rgba(8, 168, 138, 0.4);
+}
+
+.school__heading {
+  position: relative;
+  text-align: center;
+  margin-bottom: 30px;
+  padding-top: 10px;
+}
+
+.school__heading h1 {
+  font-size: 40px;
+  font-family: "Montserrat", serif;
+  font-weight: 700;
+  color: #08a88a;
+  margin: 0 auto;
+}
+
+.school__heading button {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  background-color: #08a88a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.school__heading button:hover {
+  background-color: #0d7d69;
+  transform: scale(1.05);
+}
+
+.school__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+}
+
+.school__content__subject {
+  cursor: pointer;
+  position: relative;
+  background-color: #2e2e4e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.school__content__subject:hover {
+  transform: translateY(-5px);
+}
+
+.school__content__subject button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.school__content__subject button:hover {
+  opacity: 1;
+}
+
+.school__content__subject button img {
+  width: 20px;
+  height: 20px;
+}
+
+.school__content__subject h3 {
+  font-size: 24px;
+  color: #2298dd;
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #2298dd;
+  padding-bottom: 10px;
+}
+
+.school__content__subject p {
+  word-break: break-all;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+/* Modal styles */
+.subject-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.subject-modal__content {
+  background-color: #1e1e2e;
+  padding: 30px;
+  border-radius: 10px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 0 20px rgba(8, 168, 138, 0.5);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #2298dd;
+}
+
+#name,
+#description {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2e2e4e;
+  color: white;
+  font-family: inherit;
+  resize: none;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: #666;
+  color: white;
+}
+
+.submit-btn {
+  background-color: #555;
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: scale(0.98);
+
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #888;
+}
+
+@media (max-width: 768px) {
+  main {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .school__heading {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .school__content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Input focus styles for the subject form */
+#name:focus,
+#description:focus {
+  outline: none;
+  border: 2px solid #08a88a;
+  box-shadow: 0 0 8px rgba(8, 168, 138, 0.4);
+  background-color: #2a2a40;
+  transition: all 0.3s ease;
+}
+#name {
+  font-size: 16px;
+}
+#name,
+#description {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  background-color: #2e2e4e;
+  color: #f1f1f1;
+  font-family: "Merriweather Sans", serif;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+#name::placeholder,
+#description::placeholder {
+  color: #8a8a9a;
+}
+
+/* Homework Modal Styles */
+.homeworks-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.homework-modal__content {
+  background-color: #1e1e2e;
+  padding: 30px;
+  border-radius: 10px;
+  width: 600px;
+  max-width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 0 25px rgba(8, 168, 138, 0.6);
+  color: #fff;
+  position: relative;
+}
+
+.homework-modal__content h2 {
+  color: #08a88a;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+  border-bottom: 2px solid #08a88a;
+  padding-bottom: 10px;
+}
+
+.homework-modal__content__homework ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Homework item action buttons styling */
+.homework-modal__content__homework li {
+  background-color: #2a2a40;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #08a88a;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative; /* Add position relative for absolute positioning of buttons */
+}
+
+.delete-homework-btn,
+.edit-homework-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 10px;
+}
+
+.delete-homework-btn {
+  background-color: #f44;
+  right: 10px;
+}
+
+.edit-homework-btn {
+  background-color: #2298dd;
+  right: 50px;
+}
+
+.delete-homework-btn img,
+.edit-homework-btn img {
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.delete-homework-btn:hover img,
+.edit-homework-btn:hover img {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.delete-homework-btn:hover {
+  background-color: rgba(255, 87, 87, 0.2);
+}
+
+.edit-homework-btn:hover {
+  background-color: rgba(34, 152, 221, 0.2);
+}
+
+/* Add padding to homework title to avoid overlap with buttons */
+.homework-modal__content__homework h3 {
+  padding-right: 80px;
+}
+
+/* Style for due date */
+.homework-modal__content__homework li #due-date_hw {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #faeaae;
+  font-style: italic;
+}
+
+.homework-modal__content__homework li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.homework-modal__content__homework h3 {
+  color: #2298dd;
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.homework-modal__content__homework p {
+  word-break: break-all;
+  color: #d1d1e0;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  font-family: "Merriweather Sans", serif;
+}
+
+/* Style for empty homework message */
+.homework-modal__content__homework ul p {
+  text-align: center;
+  font-style: italic;
+  color: #8a8a9a;
+  padding: 20px;
+}
+
+/* Scrollbar styling */
+.homework-modal__content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.homework-modal__content::-webkit-scrollbar-track {
+  background: #1e1e2e;
+  border-radius: 10px;
+}
+
+.homework-modal__content::-webkit-scrollbar-thumb {
+  background: #08a88a;
+  border-radius: 10px;
+}
+
+/* Close button styling for homework modal */
+#close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: transparent;
+  border: none;
+  color: #8a8a9a;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+#close-btn img {
+  width: 20px;
+  height: 20px;
+}
+#close-btn:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: rotate(90deg);
+}
+
+#close-btn:focus {
+  outline: none;
+}
+
+/* Add homework button styling */
+#add-homework-btn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: transparent;
+  border: none;
+
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+#add-homework-btn img {
+  width: 64px;
+  height: 64px;
+  transition: transform 0.3s ease;
+}
+
+#add-homework-btn:hover {
+  background-color: rgba(8, 168, 138, 0.2);
+}
+
+#add-homework-btn:hover img {
+  transform: rotate(90deg);
+}
+
+#add-homework-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(8, 168, 138, 0.5);
+}
+
+/* Add homework container styling */
+#add-homework-container {
+  background-color: #1e1e2e;
+  padding: 30px;
+  border-radius: 10px;
+  width: 600px;
+  max-width: 90%;
+  box-shadow: 0 0 20px rgba(8, 168, 138, 0.5);
+  position: absolute;
+  z-index: 2000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+#add-homework-content-form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+#add-homework-content-form h2 {
+  color: #08a88a;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: "Montserrat", sans-serif;
+  border-bottom: 2px solid #08a88a;
+  padding-bottom: 10px;
+}
+
+#add-homework-content-form .form-group {
+  margin-bottom: 20px;
+}
+
+#add-homework-content-form .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #2298dd;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#add-homework-content-form input,
+#add-homework-content-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  background-color: #2e2e4e;
+  color: #f1f1f1;
+  font-family: "Merriweather Sans", serif;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  resize: none;
+}
+
+#add-homework-content-form #due_date {
+  color: #f1f1f1;
+  font-family: "Merriweather Sans", serif;
+  cursor: pointer;
+}
+
+#add-homework-content-form input:focus,
+#add-homework-content-form textarea:focus {
+  outline: none;
+  border: 2px solid #08a88a;
+  box-shadow: 0 0 8px rgba(8, 168, 138, 0.4);
+  background-color: #2a2a40;
+}
+
+#add-homework-content-form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+#add-homework-content-form .form-actions button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#add-homework-content-form .cancel-btn {
+  background-color: #666;
+  color: white;
+}
+
+#add-homework-content-form .cancel-btn:hover {
+  background-color: #888;
+  transform: translateY(-2px);
+}
+
+#add-homework-content-form .submit-btn {
+  color: white;
+  cursor: not-allowed;
+}
+
+#add-homework-content-form .submit-btn:hover {
+  transform: translateY(-2px);
+}
+
+#add-homework-content-form .submit-btn[disabled] {
+  background-color: #555;
+  opacity: 0.6;
+  cursor: not-allowed;
+  color: #ccc;
+  transform: none;
+  box-shadow: none;
+}

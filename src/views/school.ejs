@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/school.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link rel="stylesheet" href="/styles/header.css " />
+  </head>
+  <body>
+    <%- include ("./template/nav.ejs")%> <%- include ("./template/header.ejs")%>
+    <main>
+      <div class="container">
+        <div class="school">
+          <div class="school__heading">
+            <button>Add Subject</button>
+            <h1>Subjects</h1>
+          </div>
+          <ul class="school__content">
+            <% if (subjects && subjects.length > 0) { %> <%
+            subjects.forEach((subject) => { %>
+
+            <li
+              class="school__content__subject"
+              data-name="<%= subject.name %>"
+              data-id="<%= subject.id_subject %>"
+            >
+              <button class="delete-btn">
+                <img src="/assets/delete.png" alt="delete" />
+              </button>
+              <h3><%= subject.name %></h3>
+              <p><%= subject.description %></p>
+            </li>
+            <% }); %> <% } else { %>
+            <li class="school__content__empty">
+              <p>No subjects added yet. Click "Add Subject" to get started.</p>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="/js/school/index.js"></script>
+  </body>
+</html>

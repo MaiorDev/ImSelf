@@ -5,7 +5,7 @@ body {
 }
 
 header {
-  height: 80px;
+  height: 50px;
   text-align: center;
   padding: 20px 0;
   margin-left: 90px;
@@ -13,7 +13,7 @@ header {
 }
 
 header h1 {
-  font-size: 80px;
+  font-size: 50px;
   font-family: "Montserrat", serif;
   font-optical-sizing: auto;
   font-weight: 700;
@@ -22,10 +22,11 @@ header h1 {
 }
 
 main {
+  margin-top: 25px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px 35px;
+  gap: 25px 35px;
   padding: 20px;
   margin-left: 100px;
 }
