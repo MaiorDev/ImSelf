@@ -7,8 +7,8 @@ function createHomeworksModal(subject, data) {
 
   modal.innerHTML = `
     <div class="homework-modal__content" id="homeworks-modal">  
-      <button id="add-homework-btn"><img src="./assets/add.png"></button>
-      <button id="close-btn"><img src="./assets/close.png"></button> 
+      <button id="add-homework-btn"><img src="/assets/add.png"></button>
+      <button id="close-btn"><img src="/assets/close.png"></button> 
       <h2>${subject}</h2>
       <div class="homework-modal__content__homework">
         <ul></ul>
@@ -201,6 +201,7 @@ function setupEditHomeworkForm(modal, homeworkId) {
         title: title,
         description: description,
         dueDate: dueDate,
+        
       }),
     }).then(() => {
       document.body.removeChild(modal);

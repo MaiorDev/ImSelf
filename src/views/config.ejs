@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuration | Todo App</title>
+    <link rel="stylesheet" href="/styles/config.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+   
+        <%- include ("./template/nav.ejs")%>
+        
+
+      <div class="main-content">
+        <header>
+          <h1>Configuration</h1>
+          <p>Customize your Todo App experience</p>
+        </header>
+
+        <section class="config-section" id="general-section">
+          <h2>General Settings</h2>
+
+          <div class="config-card">
+            <div class="config-item">
+              <div class="config-info">
+                <h3>Language</h3>
+                <p>Select your preferred language</p>
+              </div>
+              <div class="config-control">
+                <select id="language-select">
+                  <option value="en">English</option>
+                  <option value="es">Español</option>
+                  <option value="fr">Français</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="config-item">
+              <div class="config-info">
+                <h3>Time Format</h3>
+                <p>Choose how time is displayed</p>
+              </div>
+              <div class="config-control">
+                <div class="toggle-container">
+                  <input
+                    type="checkbox"
+                    id="time-format-toggle"
+                    class="toggle-input"
+                  />
+                  <label for="time-format-toggle" class="toggle-label"></label>
+                  <span class="toggle-text">24-hour</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="config-item">
+              <div class="config-info">
+                <h3>Start Page</h3>
+                <p>Choose which page to show on startup</p>
+              </div>
+              <div class="config-control">
+                <select id="start-page-select">
+                  <option value="dashboard">Dashboard</option>
+                  <option value="projects">Projects</option>
+                  <option value="tasks">Tasks</option>
+                  <option value="notes">Notes</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="config-section" id="theme-section">
+          <h2>Theme Settings</h2>
+
+          <div class="config-card">
+            <div class="config-item">
+              <div class="config-info">
+                <h3>Dark Mode</h3>
+                <p>Switch between light and dark themes</p>
+              </div>
+              <div class="config-control">
+                <div class="toggle-container">
+                  <input
+                    type="checkbox"
+                    id="theme-toggle"
+                    class="toggle-input"
+                  />
+                  <label for="theme-toggle" class="toggle-label"></label>
+                  <span class="toggle-text">Dark</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="config-item">
+              <div class="config-info">
+                <h3>Accent Color</h3>
+                <p>Choose your app's accent color</p>
+              </div>
+              <div class="config-control color-options">
+                <div
+                  class="color-option active"
+                  style="background-color: #4285f4"
+                ></div>
+                <div
+                  class="color-option"
+                  style="background-color: #ea4335"
+                ></div>
+                <div
+                  class="color-option"
+                  style="background-color: #fbbc05"
+                ></div>
+                <div
+                  class="color-option"
+                  style="background-color: #34a853"
+                ></div>
+                <div
+                  class="color-option"
+                  style="background-color: #8e44ad"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+            
+            
+        </section>
+        <section class="config-section" id="theme-section">
+          <h2>Account Settings</h2>
+
+          <div class="config-card">
+            <div class="config-item">
+              <div class="config-info">
+                <h3>Account Name</h3>
+                <p>Change your account name</p>
+              </div>
+              <div class="config-control">
+                <input type="text" id="account-name-input" />
+              </div>
+            </div>
+            <div class="config-item">
+              <div class="config-info">
+                <h3>Close Session</h3>
+                <p>Close and get out of your account</p>
+              </div>
+              <div class="config-control">
+                
+                <button id="close-session">Close Session</button>
+              </div>
+            </div>
+
+            <!-- <div class="config-item">
+              <div class="config-info">
+                <h3>Email</h3>
+                <p>Change your email address</p>
+              </div>
+              <div class="config-control">
+                <input type="email" id="email-input" />
+              </div>
+            </div>
+
+            <div class="config-item">
+              <div class="config-info">
+                <h3>Password</h3>
+                <p>Change your password</p>
+              </div>
+              <div class="config-control">
+                <input type="password" id="password-input" />
+              </div>
+            </div>
+          </div> -->
+
+        </section>
+
+        <div class="action-buttons">
+          <button class="secondary-btn">Reset to Default</button>
+          <button class="primary-btn">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+  <script src="/js/config.js"></script>
+</html>

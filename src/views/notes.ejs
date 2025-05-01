@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/school.css" />
+    <link rel="stylesheet" href="/styles/notes.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link rel="stylesheet" href="/styles/header.css" />
     <title>Notes</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <%- include ("./template/nav.ejs")%> <%- include ("./template/header.ejs")%>
+    <main>
+      <div class="container">
+        <div class="school">
+          <div class="school__heading">
+            <button>Add card</button>
+            <h1>notes</h1>
+          </div>
+
+          <ul class="school__content">
+            <% if (notes && notes.length > 0) { %>  
+              <% notes.forEach((note) => { %>
+                <li
+                  class="school__content__subject"
+                  data-name="<%= note.title_note %>"
+                  data-id="<%= note.id_note %>"
+                >
+                  <button class="delete-btn">
+                    <img src="/assets/delete.png" alt="delete" />
+                  </button>
+                  <h3><%= note.title_note %></h3>
+                  <p><%= note.text_note %></p>
+                </li>
+              <% }); %> 
+            <% } else { %>
+              <li class="school__content__empty">
+                <p>No notes added yet. Click "Add card" to get started.</p>
+              </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="/js/notes/index.js"></script>
+  </body>
 </html>

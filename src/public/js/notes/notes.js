@@ -1,7 +1,5 @@
-// subjects.js - Maneja la funcionalidad relacionada con las asignaturas
-
-// Función para inicializar la funcionalidad de agregar asignaturas
-function initAddSubject() {
+// Function to initialize the add subject functionality
+function initAddNote() {
   const addSubjectBtn = document.querySelector(".school__heading button");
 
   addSubjectBtn.addEventListener("click", function () {
@@ -12,10 +10,10 @@ function initAddSubject() {
     modal.innerHTML = `
       <div class="subject-modal__content">
         <h2>Add New Subject</h2>
-        <form id="subjectForm" action="/school/addSubject" method="POST">
+        <form id="subjectForm" action="/notes/addNote" method="POST">
           <div class="form-group">
             <label for="name">Subject Name</label>
-            <input type="text" id="name" name="name" >
+            <input type="text" id="name" name="title" >
           </div>
           <div class="form-group">
             <label for="description">Description</label>
@@ -37,7 +35,7 @@ function initAddSubject() {
     });
 
     // Add form validation after the form is added to the DOM
-    const form = document.getElementById("subjectForm");
+    const subjectForm = document.getElementById("subjectForm");
     const nameInput = document.getElementById("name");
     const descriptionInput = document.getElementById("description");
     const submitBtn = document.getElementById("submit-btn");
@@ -63,34 +61,35 @@ function initAddSubject() {
         submitBtn.disabled = false;
       }
     };
+
     function getUserEmailFromURL() {
       const pathParts = window.location.pathname.split("/");
       return pathParts[pathParts.length - 1]; // Get the last part of the URL which should be the email
     }
     subjectForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      fetch("/school/addSubject", {
+      fetch("/notes/addNote", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           name: nameInput.value,
-          description: descriptionInput.value,
+          text: descriptionInput.value,
           email: getUserEmailFromURL(),
         }),
       })
         .then((response) => response.json())
         .then((data) => {
           if (data.success) {
-            window.location.href = `/school/${getUserEmailFromURL()}`;
+            window.location.href = `/notes/${getUserEmailFromURL()}`;
           } else {
-            alert("Failed to add subject");
+            alert("Failed to add note");
           }
         })
         .catch((error) => {
           console.error("Error:", error);
-          alert("Failed to add subject");
+          alert("Failed to add note");
         });
     });
     descriptionInput.addEventListener("input", validateForm);
@@ -121,8 +120,8 @@ function initAddSubject() {
   });
 }
 
-// Función para inicializar la funcionalidad de eliminar asignaturas
-function initDeleteSubject() {
+// Function to initialize the delete subject functionality
+function initDeleteNote() {
   const deleteButtons = document.querySelectorAll(
     ".school__content__subject button"
   );
@@ -130,26 +129,37 @@ function initDeleteSubject() {
   deleteButtons.forEach((button) => {
     button.addEventListener("click", function (e) {
       e.stopPropagation();
-      const subjectItem = this.closest(".school__content__subject");
-      const subjectId = subjectItem.dataset.id;
+      const noteItem = this.closest(".school__content__subject");
+      const noteId = noteItem.dataset.id;
 
-      if (confirm("Are you sure you want to delete this subject?")) {
-        fetch(`/school/deleteSubject/${subjectId}`, {
+      if (confirm("Are you sure you want to delete this note?")) {
+        fetch(`/notes/deleteNote/${noteId}`, {
           method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
         })
-          .then((response) => response.json())
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
           .then((data) => {
-            subjectItem.remove();
-            return { success: true };
+            if (data.success) {
+              noteItem.remove();
+            } else {
+              alert("Failed to delete note: " + data.message);
+            }
           })
           .catch((error) => {
             console.error("Error:", error);
-            alert("Failed to delete subject");
+            alert("Failed to delete note");
           });
       }
     });
   });
 }
 
-// Exportar las funciones para usarlas en school.js
-export { initAddSubject, initDeleteSubject };
+// Export functions to use in school.js
+export { initAddNote, initDeleteNote };

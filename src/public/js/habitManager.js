@@ -1,6 +1,15 @@
 //Move habits
 let draggedHabit = null;
 
+// Function to get email from URL
+function getUserEmailFromURL() {
+  const pathParts = window.location.pathname.split("/");
+  return pathParts[pathParts.length - 1]; // Get the last part of the URL which should be the email
+}
+// variable to store the user email from the URL dat
+const userEmail = getUserEmailFromURL();
+
+console.log(getUserEmailFromURL()); // Output the email
 // make the habits draggable
 const habits = document.querySelectorAll(".habit");
 habits.forEach((habit) => {
@@ -56,6 +65,7 @@ const addHabit = document.getElementById("add-Habit");
 const form = document.getElementById("container-form");
 const titleInput = document.getElementById("titleInput");
 const submitAddHabit = document.getElementById("submitAddHabit");
+
 //open the form
 addHabit.addEventListener("click", () => {
   form.style.display = "flex";
@@ -86,6 +96,7 @@ document.getElementById("newHabitForm").addEventListener("submit", (e) => {
   const descriptionInput = document
     .getElementById("descriptionInput")
     .value.trim();
+  const userEmail = getUserEmailFromURL();
 
   if (titleInput === "") {
     alert("please put a title");
@@ -98,6 +109,7 @@ document.getElementById("newHabitForm").addEventListener("submit", (e) => {
     body: JSON.stringify({
       title: titleInput,
       description: descriptionInput,
+      email: userEmail,
     }),
   })
     .then(() => {

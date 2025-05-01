@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Todo App</title>
+    <link rel="stylesheet" href="/styles/error.css">
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="120" height="120">
+                <path fill="none" d="M0 0h24v24H0z"/>
+                <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm0-8h2v6h-2V7z" fill="currentColor"/>
+            </svg>
+        </div>
+        <h1 class="error-title">¡Ups! Algo salió mal</h1>
+        <p class="error-message"><%- typeof message !== 'undefined' ? message : 'Ha ocurrido un error inesperado.' %></p>
+        <p class="error-code"><%- typeof status !== 'undefined' ? 'Error ' + status : '' %></p>
+        <a href="/" class="back-button">Volver al inicio</a>
+    </div>
+    <script src="/scripts/error.js"></script>
+</body>
+</html>

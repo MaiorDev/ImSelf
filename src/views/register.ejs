@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/register.css" />
+    <title>Todo App - Register</title>
+  </head>
+  <body>
+    <div class="register-container">
+      <div class="register-card">
+        <div class="register-header">
+          <h1>Create Account</h1>
+          <p>Join us to start organizing your tasks</p>
+        </div>
+
+        <form
+          class="register-form"
+          id="register-form"
+          action="/register"
+          method="POST"
+        >
+          <div class="form-group">
+            <div class="form-control">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Choose a username"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-control">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-control">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Create a password"
+              />
+            </div>
+            <div class="password-strength">
+              <div class="strength-meter">
+                <div class="strength-meter-fill" id="strength-meter-fill"></div>
+              </div>
+              <span id="password-strength-text">Password strength</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-control">
+              <label for="confirm-password">Confirm Password</label>
+              <input
+                type="password"
+                id="confirm-password"
+                name="confirm-password"
+                placeholder="Confirm your password"
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="register-btn">Create Account</button>
+        </form>
+
+        <div class="register-footer">
+          <p>Already have an account? <a href="/">Sign in</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/register.js"></script>
+  </body>
+</html>

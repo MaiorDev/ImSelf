@@ -3,67 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/index.css" />
-    <link rel="stylesheet" href="/styles/nav.css" />
-    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <title>Todo App - Login</title>
   </head>
   <body>
-    <%- include ("./template/nav.ejs")%>
-
-    <header>
-      <h1>ImSelf</h1>
-    </header>
-
-    <main>
-      <a href="/habitTracker">
-        <div class="Card">
-          <img src="/assets/calendar.png" alt="Habit Tracker Icon" />
-          <h2>Habit tracker</h2>
-          <p>
-            Track and build your daily habits and have control of the progress.
-          </p>
+    <div class="login-container">
+      <div class="login-card">
+        <div class="login-header">
+          <h1>Welcome Back</h1>
+          <p>Please login to continue</p>
         </div>
-      </a>
 
-      <a href="/projects">
-        <div class="Card">
-          <img src="/images/icon.png" alt="Projects Icon" />
-          <h2>Projects</h2>
-          <p>Some things that u can do</p>
-        </div>
-      </a>
+        <form class="login-form" id="loginForm" method="POST">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+            />
+          </div>
 
-      <a href="/objectives">
-        <div class="Card">
-          <img src="/images/icon.png" alt="Objectives Icon" />
-          <h2>Objectives</h2>
-          <p>Some things you can do</p>
-        </div>
-      </a>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+            />
+          </div>
 
-      <a href="/school">
-        <div class="Card">
-          <img src="/assets/school.png" alt="School Icon" />
-          <h2>School</h2>
-          <p>Some things that u can do</p>
-        </div>
-      </a>
+          <div class="form-options">
+            <div class="remember-me">
+              <input type="checkbox" id="remember" name="remember" />
+              <label for="remember">Remember me</label>
+            </div>
+            <a href="/forgot-password" class="forgot-password"
+              >Forgot password?</a
+            >
+          </div>
 
-      <a href="/notes">
-        <div class="Card">
-          <img src="/assets/notes.png" alt="Notes Icon" />
-          <h2>Notes</h2>
-          <p>Some things that u can do</p>
+          <button type="submit" class="login-btn" id="login-btn">Login</button>
+        </form>
+
+        <div class="login-footer">
+          <p>Don't have an account? <a href="/register">Sign up</a></p>
         </div>
-      </a>
-    </main>
-    <a href="https://lordicon.com/">Icons by Lordicon.com</a>
+      </div>
+    </div>
+    <script src="/js/index.js"></script>
   </body>
 </html>

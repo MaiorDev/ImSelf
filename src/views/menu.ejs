@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/menu.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  </head>
+  <body>
+    <%- include ("./template/nav.ejs")%>
+
+    <header>
+      <h1>ImSelf</h1>
+    </header>
+
+    <main>
+      <!-- Links will be updated by JavaScript to include the token -->
+      <a href="/habitTracker/<%-user.email%>">
+        <div class="Card">
+          <img src="/assets/calendar.png" alt="Habit Tracker Icon" />
+          <h2>Habit tracker</h2>
+          <p>
+            Track and build your daily habits and have control of the progress.
+          </p>
+        </div>
+      </a>
+
+      <!-- Rest of the content remains the same -->
+      <!-- Coming soon... -->
+      <!-- <a href="/projects/<%-user.email%>">
+        <div class="Card">
+          <img src="/assets/projects.png" alt="Projects Icon" />
+          <h2>Projects</h2>
+          <p>Some things that u can do</p>
+        </div>
+      </a>
+
+      <a href="/objectives/<%-user.email%>">
+        <div class="Card">
+          <img src="/assets/objetives.png" alt="Objectives Icon" />
+          <h2>Objectives</h2>
+          <p>Some things you can do</p>
+        </div>
+      </a> -->
+
+      <a href="/school/<%-user.email%>">
+        <div class="Card">
+          <img src="/assets/school.png" alt="School Icon" />
+          <h2>School</h2>
+          <p>Some things that u can do</p>
+        </div>
+      </a>
+
+      <a href="/notes/<%-user.email%>">
+        <div class="Card">
+          <img src="/assets/notes.png" alt="Notes Icon" />
+          <h2>Notes</h2>
+          <p>Some things that u can do</p>
+        </div>
+      </a>
+    </main>
+
+    <!-- Place the script at the end of the body for better performance -->
+    <script src="/js/menu.js"></script>
+  </body>
+</html>

@@ -29,14 +29,14 @@
 
             <li
               class="school__content__subject"
-              data-name="<%= subject.name %>"
+              data-name="<%= subject.name_subject %>"
               data-id="<%= subject.id_subject %>"
             >
               <button class="delete-btn">
                 <img src="/assets/delete.png" alt="delete" />
               </button>
-              <h3><%= subject.name %></h3>
-              <p><%= subject.description %></p>
+              <h3><%= subject.name_subject %></h3>
+              <p><%= subject.description_subject %></p>
             </li>
             <% }); %> <% } else { %>
             <li class="school__content__empty">
