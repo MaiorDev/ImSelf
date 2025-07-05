@@ -9,7 +9,7 @@ function initAddNote() {
 
     modal.innerHTML = `
       <div class="subject-modal__content">
-        <h2>Add New Subject</h2>
+        <h2>Add new note</h2>
         <form id="subjectForm" action="/notes/addNote" method="POST">
           <div class="form-group">
             <label for="name">Subject Name</label>

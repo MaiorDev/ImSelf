@@ -24,8 +24,8 @@ function createHomeworksModal(subject, data) {
     data.homework.forEach((homework) => {
       homeworkList.innerHTML += `
         <li>
-          <button data-id="${homework.id_homework}" class="delete-homework-btn"><img src="./assets/delete.png"></button>
-          <button data-id="${homework.id_homework}" class="edit-homework-btn"><img src="./assets/edit.png"></button>
+          <button data-id="${homework.id_homework}" class="delete-homework-btn"><img src="/assets/delete.png"></button>
+          <button data-id="${homework.id_homework}" class="edit-homework-btn"><img src="/assets/edit.png"></button>
           <h3>${homework.title_hw}</h3>
           <p>${homework.description_hw}</p>
           <p id="due-date_hw">Due Date: ${homework.due_date_hw}</p>
@@ -201,7 +201,6 @@ function setupEditHomeworkForm(modal, homeworkId) {
         title: title,
         description: description,
         dueDate: dueDate,
-        
       }),
     }).then(() => {
       document.body.removeChild(modal);

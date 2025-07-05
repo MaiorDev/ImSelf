@@ -1,0 +1,15 @@
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #14b8a6;
+  --background-color: #f8fafc;
+  --card-background: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --danger-color: #ef4444;
+  --success-color: #22c55e;
+  --warning-color: #f59e0b;
+  --shadow-color: rgba(51, 65, 85, 0.1);
+  --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  --border-radius: 1rem;
+  --transition: all 0.3s ease;
+}

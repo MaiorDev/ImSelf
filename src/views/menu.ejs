@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project</title>
+    <title>Life tracker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,9 +18,12 @@
     <%- include ("./template/nav.ejs")%>
 
     <header>
-      <h1>ImSelf</h1>
+      <h1>Life Tracker</h1>
     </header>
 
+    <div id="saludo-container">
+      <p id="saludo">hola <%- user.username%>!</p>
+    </div>
     <main>
       <!-- Links will be updated by JavaScript to include the token -->
       <a href="/habitTracker/<%-user.email%>">
@@ -50,20 +53,18 @@
           <p>Some things you can do</p>
         </div>
       </a> -->
-
-      <a href="/school/<%-user.email%>">
-        <div class="Card">
-          <img src="/assets/school.png" alt="School Icon" />
-          <h2>School</h2>
-          <p>Some things that u can do</p>
-        </div>
-      </a>
-
       <a href="/notes/<%-user.email%>">
         <div class="Card">
           <img src="/assets/notes.png" alt="Notes Icon" />
           <h2>Notes</h2>
-          <p>Some things that u can do</p>
+          <p>Make your notes about anything</p>
+        </div>
+      </a>
+      <a href="/school/<%-user.email%>">
+        <div class="Card">
+          <img src="/assets/school.png" alt="School Icon" />
+          <h2>School</h2>
+          <p>Have the control of the subjects in the school and homeworks</p>
         </div>
       </a>
     </main>

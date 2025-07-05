@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/school.css" />
-    <link rel="stylesheet" href="/styles/notes.css" />
+
     <link rel="stylesheet" href="/styles/nav.css" />
     <link rel="stylesheet" href="/styles/header.css" />
     <title>Notes</title>
@@ -26,24 +26,23 @@
           </div>
 
           <ul class="school__content">
-            <% if (notes && notes.length > 0) { %>  
-              <% notes.forEach((note) => { %>
-                <li
-                  class="school__content__subject"
-                  data-name="<%= note.title_note %>"
-                  data-id="<%= note.id_note %>"
-                >
-                  <button class="delete-btn">
-                    <img src="/assets/delete.png" alt="delete" />
-                  </button>
-                  <h3><%= note.title_note %></h3>
-                  <p><%= note.text_note %></p>
-                </li>
-              <% }); %> 
-            <% } else { %>
-              <li class="school__content__empty">
-                <p>No notes added yet. Click "Add card" to get started.</p>
-              </li>
+            <% if (notes && notes.length > 0) { %> <% notes.forEach((note) => {
+            %>
+            <li
+              class="school__content__subject"
+              data-name="<%= note.title_note %>"
+              data-id="<%= note.id_note %>"
+            >
+              <button class="delete-btn">
+                <img src="/assets/delete.png" alt="delete" />
+              </button>
+              <h3><%= note.title_note %></h3>
+              <p><%= note.text_note %></p>
+            </li>
+            <% }); %> <% } else { %>
+            <li class="school__content__empty">
+              <p>No notes added yet. Click "Add card" to get started.</p>
+            </li>
             <% } %>
           </ul>
         </div>

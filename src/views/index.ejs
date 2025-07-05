@@ -1,64 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/index.css" />
-    <title>Todo App - Login</title>
+    <title>LifeTrack</title>
   </head>
   <body>
     <div class="login-container">
       <div class="login-card">
-        <div class="login-header">
-          <h1>Welcome Back</h1>
-          <p>Please login to continue</p>
+        <div class="features-preview">
+          <div class="feature-item">
+            <svg class="feature-icon" viewBox="0 0 24 24">
+              <path
+                d="M9 12h6m-6-4h6m-6 8h6M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <h3>Notas Inteligentes</h3>
+            <p>Organiza tus ideas y tareas con notas personalizables</p>
+          </div>
+          <div class="feature-item">
+            <svg class="feature-icon" viewBox="0 0 24 24">
+              <path
+                d="M12 2v6m0 12v2M4.93 4.93l4.24 4.24m5.66 5.66l4.24 4.24M2 12h6m12 0h2M4.93 19.07l4.24-4.24m5.66-5.66l4.24-4.24"
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <h3>Seguimiento de Hábitos</h3>
+            <p>
+              Construye hábitos positivos y mantén un registro de tu progreso
+            </p>
+          </div>
+          <div class="feature-item">
+            <svg class="feature-icon" viewBox="0 0 24 24">
+              <path
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <h3>Gestión Académica</h3>
+            <p>
+              Administra tus materias y mantén un seguimiento de tu rendimiento
+              escolar
+            </p>
+          </div>
         </div>
 
-        <form class="login-form" id="loginForm" method="POST">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-            />
+        <div class="login-content">
+          <div class="login-header">
+            <h1>Bienvenido a LifeTrack</h1>
+            <p>Tu asistente personal para una vida más organizada</p>
           </div>
 
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-            />
-          </div>
-
-          <div class="form-options">
-            <div class="remember-me">
-              <input type="checkbox" id="remember" name="remember" />
-              <label for="remember">Remember me</label>
+          <form class="login-form" id="loginForm" method="POST">
+            <div class="form-group">
+              <label for="email">Correo electrónico</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="tu@email.com"
+                autocomplete="email"
+              />
             </div>
-            <a href="/forgot-password" class="forgot-password"
-              >Forgot password?</a
-            >
+
+            <div class="form-group">
+              <label for="password">Contraseña</label>
+              <div class="password-input">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Tu contraseña"
+                  autocomplete="current-password"
+                />
+                <button
+                  type="button"
+                  class="toggle-password"
+                  aria-label="Mostrar contraseña"
+                >
+                  <svg viewBox="0 0 24 24" width="20" height="20">
+                    <path
+                      d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-options">
+              <label class="remember-me">
+                <input type="checkbox" id="remember" name="remember" />
+                <span>Recordarme</span>
+              </label>
+              <a href="/forgot-password" class="forgot-password"
+                >¿Olvidaste tu contraseña?</a
+              >
+            </div>
+
+            <button type="submit" class="login-btn" id="login-btn">
+              Iniciar Sesión
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <path
+                  d="M13 5l7 7-7 7M4 12h16"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+          </form>
+
+          <div class="login-footer">
+            <p>¿No tienes una cuenta? <a href="/register">Regístrate</a></p>
           </div>
-
-          <button type="submit" class="login-btn" id="login-btn">Login</button>
-        </form>
-
-        <div class="login-footer">
-          <p>Don't have an account? <a href="/register">Sign up</a></p>
         </div>
       </div>
     </div>
+
     <script src="/js/index.js"></script>
   </body>
 </html>

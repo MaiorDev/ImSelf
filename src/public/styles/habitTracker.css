@@ -3,11 +3,10 @@ body {
   font-family: "Montserrat", serif;
   font-optical-sizing: auto;
   font-style: normal;
-  color: #f1f1f1;
-  background-color: #101218;
+  color: #111;
+  background-color: #eee;
 }
 main {
-  padding-top: 40px;
   height: calc(100vh - 100px);
   width: calc(100% - 90px);
   margin-left: 90px;
@@ -19,10 +18,11 @@ h1 {
   font-weight: 700;
   font-style: normal;
   text-align: center;
+  color: #08a88a;
   margin: 0 auto;
 }
 #container-habits {
-  background-color: #1e1e2e;
+  background-color: #eee;
   border-radius: 15px;
   min-height: 300px;
   display: flex;
@@ -45,8 +45,8 @@ h1 {
 .division {
   user-select: none;
   padding: 0 30px;
-  border-left: 1px solid #fefefe55;
-  border-right: 1px solid #fefefe55;
+  border-left: 2px solid #2225;
+  border-right: 2px solid #2225;
   min-height: 300px;
 }
 .division h2 {
@@ -65,18 +65,18 @@ h1 {
   background-color: #2e2e4e22;
 }
 .habit {
-  border: 1px solid #fefefe55;
+  border: 1px solid #2225;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
-  background-color: #1e1e2e;
+  background-color: #eee;
   cursor: pointer;
 }
 .habit:hover {
-  background-color: #2e2e4e;
+  background-color: #ccc;
 }
 .habit:focus {
   cursor: move;
@@ -96,7 +96,7 @@ h1 {
   width: 60px;
   height: 60px;
   font-size: 30px;
-  background-color: #0d7d69;
+  background: var(--gradient);
   border: none;
   color: white;
   cursor: pointer;
@@ -122,7 +122,6 @@ h1 {
   margin: 60px 0 0 90px;
   width: calc(100% - 90px);
   height: calc(100% - 60px);
-  background-color: rgba(16, 18, 24, 0.9);
   display: none;
   justify-content: center;
   align-items: center;
@@ -131,11 +130,11 @@ h1 {
 
 #container-form form {
   position: relative;
-  background-color: #1e1e2e;
+  background-color: #eee;
   padding: 30px;
   border-radius: 10px;
   width: 400px;
-  box-shadow: 0 0px 10px 0 rgba(8, 168, 138, 0.4);
+  box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.8);
 }
 #close-form {
   user-select: none;
@@ -162,8 +161,8 @@ h1 {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #2e2e4e;
-  color: #fefefe;
+  background-color: #ccc5;
+  color: #222;
   width: 100%;
   box-sizing: border-box;
 }
@@ -172,7 +171,7 @@ h1 {
   box-shadow: 0 0 0 2px #08a88a;
 }
 #titleInput::placeholder {
-  color: #fefefe44;
+  color: #3335;
 }
 #descriptionInput {
   font-family: "Montserrat", serif;
@@ -188,8 +187,8 @@ h1 {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #2e2e4e;
-  color: #fefefe;
+  background-color: #ccc5;
+  color: #222;
 }
 #descriptionInput:focus {
   outline: none;
@@ -217,7 +216,7 @@ h1 {
   margin: 60px 0 0 90px;
   width: calc(100% - 90px);
   height: calc(100% - 60px);
-  background-color: rgba(16, 18, 24, 0.9);
+
   display: none;
   justify-content: center;
   align-items: center;
@@ -225,7 +224,7 @@ h1 {
 }
 #info-card {
   position: relative;
-  background-color: #1e1e2e;
+  background-color: #eee;
   padding: 30px;
   border-radius: 10px;
   width: 400px;
@@ -291,8 +290,8 @@ h1 {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #1e1e2e;
-  color: #fefefe;
+  background-color: #ccc5;
+  color: #222;
   width: 100%;
   box-sizing: border-box;
 }
@@ -313,8 +312,8 @@ h1 {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #2e2e4e;
-  color: #fefefe;
+  background-color: #ccc5;
+  color: #222;
 }
 #description_info-card:focus {
   outline: none;

@@ -95,7 +95,7 @@ function creationMailVerificationCode(token, user) {
 <body>
   <div class="email-container">
     <div class="email-header">
-      <div class="logo">Todo App</div>
+      <div class="logo">Life Tracker</div>
       <h1>Password Reset</h1>
     </div>
     <div class="email-body">

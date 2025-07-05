@@ -3,6 +3,7 @@ const username = document.getElementById("username");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const password2 = document.getElementById("confirm-password");
+const togglePasswordButtons = document.querySelectorAll(".toggle-password");
 
 // Set maximum character limits
 const MAX_USERNAME_LENGTH = 20;
@@ -34,6 +35,34 @@ password2.addEventListener("input", () => {
   }
 });
 
+// Toggle password visibility
+togglePasswordButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const input = button.parentElement.querySelector("input");
+    const type =
+      input.getAttribute("type") === "password" ? "text" : "password";
+    input.setAttribute("type", type);
+
+    // Update button aria-label
+    const ariaLabel =
+      type === "password" ? "Mostrar contraseña" : "Ocultar contraseña";
+    button.setAttribute("aria-label", ariaLabel);
+
+    // Update icon (optional - if you want to change the icon)
+    const eyeIcon = button.querySelector(".eye-icon");
+    if (type === "password") {
+      eyeIcon.innerHTML = `
+        <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+        <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" clip-rule="evenodd" />
+      `;
+    } else {
+      eyeIcon.innerHTML = `
+        <path d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+      `;
+    }
+  });
+});
+
 formRegister.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -51,40 +80,43 @@ function validateInputs() {
   let isValid = true;
 
   if (usernameValue === "") {
-    setErrorFor(username, "Username cannot be blank");
+    setErrorFor(username, "El nombre de usuario no puede estar vacío");
     isValid = false;
   } else if (usernameValue.length < 8) {
-    setErrorFor(username, "Username must be at least 8 characters");
+    setErrorFor(
+      username,
+      "El nombre de usuario debe tener al menos 8 caracteres"
+    );
     isValid = false;
   } else {
     setSuccessFor(username);
   }
 
   if (emailValue === "") {
-    setErrorFor(email, "Email cannot be blank");
+    setErrorFor(email, "El correo electrónico no puede estar vacío");
     isValid = false;
   } else if (!isValidEmail(emailValue)) {
-    setErrorFor(email, "Provide a valid email address");
+    setErrorFor(email, "Proporciona un correo electrónico válido");
     isValid = false;
   } else {
     setSuccessFor(email);
   }
 
   if (passwordValue === "") {
-    setErrorFor(password, "Password cannot be blank");
+    setErrorFor(password, "La contraseña no puede estar vacía");
     isValid = false;
   } else if (passwordValue.length < 8) {
-    setErrorFor(password, "Password must be at least 8 characters");
+    setErrorFor(password, "La contraseña debe tener al menos 8 caracteres");
     isValid = false;
   } else {
     setSuccessFor(password);
   }
 
   if (password2Value === "") {
-    setErrorFor(password2, "Please confirm password");
+    setErrorFor(password2, "Por favor confirma tu contraseña");
     isValid = false;
   } else if (password2Value !== passwordValue) {
-    setErrorFor(password2, "Password does not match");
+    setErrorFor(password2, "Las contraseñas no coinciden");
     isValid = false;
   } else {
     setSuccessFor(password2);
@@ -96,14 +128,13 @@ function validateInputs() {
 // Función para enviar el formulario mediante fetch
 function submitForm() {
   const registerBtn = document.querySelector(".register-btn");
-  const originalBtnText = registerBtn.textContent;
+  const originalBtnText = registerBtn.innerHTML;
 
   // Cambiar el texto del botón para mostrar que está procesando
-  registerBtn.textContent = "Creating account...";
+  registerBtn.innerHTML = `<span>Creando cuenta...</span>`;
   registerBtn.disabled = true;
 
   // Obtener los datos del formulario
-
   const formData = {
     username: username.value.trim(),
     email: email.value.trim(),
@@ -144,15 +175,19 @@ function submitForm() {
       window.location.href = "/verifyAccount";
     })
     .catch((error) => {
-      alert(error.message || "An error occurred. Please try again.");
-      registerBtn.textContent = originalBtnText;
+      alert(
+        error.message || "Ha ocurrido un error. Por favor intenta de nuevo."
+      );
+      registerBtn.innerHTML = originalBtnText;
       registerBtn.disabled = false;
     });
 }
+
 function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
+
 function setErrorFor(input, message) {
   const formControl = input.parentElement;
   // Check if small element exists, if not create it
@@ -209,8 +244,8 @@ function calculatePasswordStrength(password) {
   if (!password) {
     return {
       percent: 0,
-      color: "#ff5757",
-      text: "Password strength",
+      color: "#ef4444",
+      text: "Seguridad de la contraseña",
     };
   }
 
@@ -238,23 +273,23 @@ function calculatePasswordStrength(password) {
   // Determine strength level
   let strengthLevel = {
     percent: score,
-    text: "Weak",
-    color: "#ff5757", // red
+    text: "Débil",
+    color: "#ef4444", // red
   };
 
   if (score >= 40) {
-    strengthLevel.text = "Medium";
-    strengthLevel.color = "#ffbd3e"; // orange
+    strengthLevel.text = "Media";
+    strengthLevel.color = "#f59e0b"; // amber
   }
 
   if (score >= 70) {
-    strengthLevel.text = "Strong";
-    strengthLevel.color = "#08a88a"; // green
+    strengthLevel.text = "Fuerte";
+    strengthLevel.color = "#10b981"; // green
   }
 
   if (score >= 90) {
-    strengthLevel.text = "Very Strong";
-    strengthLevel.color = "#08a88a"; // green
+    strengthLevel.text = "Muy fuerte";
+    strengthLevel.color = "#10b981"; // green
   }
 
   return strengthLevel;

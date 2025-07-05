@@ -56,7 +56,7 @@ loginForm.addEventListener("submit", (event) => {
         window.location.href = `/menu/${data.userEmail}`;
       })
       .catch((error) => {
-        console.error("sadasd");
+      
         // Show error message
         showError(emailInput, error.message);
         // Reset button state
@@ -96,3 +96,31 @@ function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const togglePasswordButton = document.querySelector('.toggle-password');
+    const passwordInput = document.querySelector('#password');
+
+    if (togglePasswordButton && passwordInput) {
+        togglePasswordButton.addEventListener('click', function() {
+            // Cambiar el tipo de input entre password y text
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            // Cambiar el ícono del ojo
+            const eyeIcon = this.querySelector('svg path');
+            if (type === 'password') {
+                // Ícono de ojo cerrado
+                eyeIcon.setAttribute('d', 'M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z');
+            } else {
+                // Ícono de ojo abierto
+                eyeIcon.setAttribute('d', 'M3.98 8.223A10.907 10.907 0 001 12c0 .778.108 1.533.311 2.25.17.61.43 1.177.762 1.69.793 1.219 1.903 2.215 3.208 2.84A9.9 9.9 0 0012 20c1.894 0 3.63-.48 5.18-1.42 1.304-.626 2.415-1.622 3.208-2.84.332-.513.592-1.08.762-1.69.203-.717.311-1.472.311-2.25 0-.778-.108-1.533-.311-2.25-.17-.61-.43-1.177-.762-1.69-.793-1.219-1.903-2.215-3.208-2.84A9.9 9.9 0 0012 4c-1.894 0-3.63.48-5.18 1.42-1.304.626-2.415 1.622-3.208 2.84-.332.513-.592 1.08-.762 1.69zM12 18a6 6 0 110-12 6 6 0 010 12zm0-2a4 4 0 100-8 4 4 0 000 8z');
+            }
+
+            // Actualizar el texto del aria-label
+            this.setAttribute('aria-label', 
+                type === 'password' ? 'Mostrar contraseña' : 'Ocultar contraseña'
+            );
+        });
+    }
+});

@@ -2,12 +2,12 @@
   /* --primary-color: #3498db; */
   --primary-color: #08a88a;
   --secondary-color: #2ecc71;
-  --background-color: #101218;
-  --card-bg: #1a1d25;
-  --text-color: #f1f1f1;
+  --background-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-color: #000;
   --border-color: #2c3040;
   --accent-color: #e74c3c;
-  --shadow-color: rgba(0, 0, 0, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.7);
 }
 
 * {
@@ -84,7 +84,7 @@ h1 {
   font-size: 16px;
   line-height: 1.6;
   margin-bottom: 30px;
-  color: #ccc;
+  color: #4449;
 }
 
 .info-box {
