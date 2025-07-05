@@ -12,7 +12,7 @@ const transport = nodemailer.createTransport({
   },
 });
 
-export async function sendMailResetPassword(email, subject, token, user) {
+async function sendMailResetPassword(email, subject, token, user) {
   transport.sendMail({
     from: process.env.EMAIL_USER,
     to: email,
@@ -123,3 +123,4 @@ function creationMailVerificationCode(token, user) {
 </html>
 `;
 }
+module.exports = { sendMailResetPassword };

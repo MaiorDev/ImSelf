@@ -11,8 +11,7 @@ const transport = nodemailer.createTransport({
     pass: process.env.EMAIL_PASSWORD,
   },
 });
-
-export async function sendMail(email, subject, token, user) {
+async function sendMail(email, subject, token, user) {
   transport.sendMail({
     from: process.env.EMAIL_USER,
     to: email,
@@ -132,3 +131,5 @@ function creationMailVerificationCode(token, user) {
 </html>
 `;
 }
+
+module.exports = { sendMail };
