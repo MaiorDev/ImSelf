@@ -1,10 +1,10 @@
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
-  host: "localhost",
-  database: "todo-app",
-  user: "root",
-  password: "",
+  host: process.env.MYSQLHOST,
+  database: process.env.MYSQLDATABASE,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
 });
 
 connection.connect((err) => {
